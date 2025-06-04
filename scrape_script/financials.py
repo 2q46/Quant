@@ -6,8 +6,10 @@ import pandas as pd
 load_dotenv()
 apikey = os.getenv("API_KEY")
 
+existing_files = {file.split("_")[0] for file in os.listdir("financial_data") if file.endswith("_financials.csv")}
+
 with open("stocks.txt", "r") as file:
-    stocks = [line.strip() for line in file.readlines() if line.strip() not in ["KO", "MCD", "PEP", "CMG", "DASH", "DPZ", "SHAK", "WEN", "YUM", "SBUX", "WING", "JACK", "CBRL", "NDLS"]]
+    stocks = [line.strip() for line in file.readlines() if line.strip() not in existing_files]
 
 stock_data = {}
 for stock in stocks:
