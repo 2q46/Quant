@@ -22,4 +22,4 @@ for stock in stocks:
     earnings_df = pd.DataFrame(earnings_data["quarterlyEarnings"])
     financials_df = pd.concat([income_df, cashflow_df, earnings_df], axis=1)
     financials_df = financials_df.loc[:,~financials_df.columns.duplicated()].copy()
-    financials_df.to_csv(f"{stock}_financials.csv")
+    financials_df.to_csv(f"financial_data/{stock}_financials.csv")
